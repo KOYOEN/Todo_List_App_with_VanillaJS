@@ -6,7 +6,37 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
+    <section class="body-section">
+        <header class="body-section-header">todos</header>
+        <section class="body-section-list">
+            <input id="toggle-all" class="toggle-all" type="checkbox">
+            <label for="toggle-all" class="toggle-all-label">❯</label>
+            <input class="new-item" type="text" placeholder="What needs to be done?">
+            <ul class="todo-list"></ul>
+            <footer class="body-section-list-footer">
+                <span class="todo-count"><strong>0</strong> items left</span>
+                <span class="todo-index-all">All</span>
+                <span class="todo-index-active">Active</span>
+                <span class="todo-index-completed">Completed</span>
+                <button class="todo-button-clear">Clear completed</button>
+            </footer>
+        </section>
+        <footer class="body-section-footer">
+            <p>Double-click to edit a todo</p>
+            <p>
+                Created by
+                <a class="link-tag" href="https://twitter.com/oscargodson">Oscar Godson</a>
+            </p>
+            <p>
+                Refactored by
+                <a class="link-tag" href="https://github.com/cburgmer">Oscar Godson</a>
+            </p>
+            <p>
+                Part of
+                <a class="link-tag" href="http://todomvc.com">TodoMVC</a>
+            </p>
+        </footer>
+    </section>
 
 </body>
 </html>
