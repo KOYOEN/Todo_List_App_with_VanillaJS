@@ -7,6 +7,7 @@
     - aside
     - section 내 input과 리스트 표현
     - input 하단 상태바, 체크표시
+  
 
 - [ ] Check 기능
     - input 옆 아래방향 화살표 클릭시 전체 체크와 색 넣기
@@ -28,3 +29,7 @@
 - [ ] 입력과 수정 기능
     - Input에 입력후 Enter시 List에 등록하는 기능
     - List 더블 클릭시 해당 항목 수정 기능
+  
+
+- 하면서 배운 점
+  - margin auto을 활용하면 중앙정렬이 가능하다.
