@@ -29,8 +29,8 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 body {
-    width: auto;
-    line-height: 1;
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
     min-width: 550px;
     background-color: #F5F5F5;
 }
@@ -50,15 +50,12 @@ table {
     border-spacing: 0;
 }
 .body-section {
-    position: absolute;
-    top: 10px;
-    left: calc(50% - 225px);
     width: 550px;
+    margin: 5px auto 0px;
 }
 .body-section-list {
-    position: absolute;
-    width: 100%;
-    box-shadow: 0px 0px 20px #C1C0BE;
+    position: relative;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 
 }
 .body-section-header {
@@ -67,35 +64,41 @@ table {
     font-weight: 100;
     text-align: center;
 }
-
+.body-section-input-wrap {
+    border-bottom: 1px solid #efefef;
+    background-color: #ffffff;
+}
+.body-section-input-wrap div {
+    display: inline-block;
+    width: 45px;
+}
 .new-item {
-    width: 473px;
-    height: 33px;
-    padding: 15px 15px 15px 60px;
-    font-size: 30px;
-    border: 1px solid #efefef;
+    width: 470px;
+    height: 20px;
+    padding: 15px 15px 15px 0px;
+    font-size: 20px;
+    border: none;
 }
 .new-item::placeholder {
     color: #E6E6E6;
     font-style: italic;
 }
-
+.new-item:focus {
+    border: none;
+    outline: none;
+}
 .toggle-all {
-    position:absolute;
+    margin: 0;
     visibility: hidden;
 }
 .toggle-all-label {
-    position: absolute;
-    top: 15px;
-    left: 20px;
+    display: inline-block;
     font-size: 25px;
     transform: rotate(90deg);
     color : #E6E6E6;
+    vertical-align: middle;
 }
 .body-section-footer {
-    position: absolute;
-    top: 200px;
-    left: calc(50% - 90px);
     margin-top: 50px;
     text-align: center;
 }
@@ -118,13 +121,23 @@ table {
 }
 
 .body-section-list-footer {
-    height: 10px;
-    position: relative;
-    padding: 15px 10px;
+    display: flex;
+    width: 520px;
+    height: 20px;
+    padding: 10px 15px;
     color: #777777;
     background-color: #ffffff;
-    border: 1px solid #efefef;
-    vertical-align: middle;
+    justify-content: space-between;
+}
+.body-section-list-footer::before {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 40px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 8px 0 -3px #f6f6f6, 0 9px 0 -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 0 -6px rgba(0,0,0, 0.1);
 }
 .todo-button-clear {
     background-color: #ffffff;
@@ -134,23 +147,13 @@ table {
 .todo-button-clear:hover {
     text-decoration: underline;
 }
-.todo-button-clear:focus {
-    border: none;
-    outline: none;
-}
 
 
-.todo-count {
-    padding: 5px;
-    position: absolute;
-    left : 10px;
-    bottom: 5px;
+.todo-index {
+    line-height: 20px;
 }
 .todo-index-all {
     padding: 5px 10px;
-    position: absolute;
-    left: 150px;
-    bottom: 5px;
 }
 .todo-index-all:hover {
     padding: 4px 9px;
@@ -159,9 +162,6 @@ table {
 }
 .todo-index-active{
     padding: 5px 10px;
-    position: absolute;
-    left: 200px;
-    bottom: 5px;
 }
 .todo-index-active:hover {
     padding: 4px 9px;
@@ -170,9 +170,6 @@ table {
 }
 .todo-index-completed{
     padding: 5px 10px;
-    position: absolute;
-    right: 200px;
-    bottom: 5px;
 }
 .todo-index-completed:hover {
     padding: 4px 9px;
@@ -181,7 +178,4 @@ table {
 }
 .todo-button-clear {
     padding: 5px 10px;
-    position: absolute;
-    right: 10px;
-    bottom: 5px;
 }
