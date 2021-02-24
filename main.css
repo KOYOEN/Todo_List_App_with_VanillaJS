@@ -65,6 +65,7 @@ table {
     text-align: center;
 }
 .body-section-input-wrap {
+    display: flex;
     border-bottom: 1px solid #efefef;
     background-color: #ffffff;
 }
@@ -75,7 +76,7 @@ table {
 .new-item {
     width: 470px;
     height: 20px;
-    padding: 15px 15px 15px 0px;
+    padding: 15px;
     font-size: 20px;
     border: none;
 }
@@ -94,6 +95,7 @@ table {
 .toggle-all-label {
     display: inline-block;
     font-size: 25px;
+    line-height: 50px;
     transform: rotate(90deg);
     color : #E6E6E6;
     vertical-align: middle;
@@ -137,6 +139,7 @@ table {
     right: 0px;
     height: 40px;
     overflow: hidden;
+    pointer-events: none;
     box-shadow: 0 1px 1px rgba(0,0,0,0.2), 0 8px 0 -3px #f6f6f6, 0 9px 0 -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 0 -6px rgba(0,0,0, 0.1);
 }
 .todo-button-clear {
@@ -150,32 +153,21 @@ table {
 
 
 .todo-index {
+    width: 200px;
     line-height: 20px;
+
 }
-.todo-index-all {
-    padding: 5px 10px;
-}
-.todo-index-all:hover {
-    padding: 4px 9px;
-    border: 1px solid #EAD7D7;
+.todo-index > span {
+    margin: 3px;
+    padding: 3px 7px;
+    text-decoration: none;
+    border: 1px solid transparent;
     border-radius: 3px;
+
 }
-.todo-index-active{
-    padding: 5px 10px;
+.todo-index > span:hover {
+    border-color: #EAD7D7;
 }
-.todo-index-active:hover {
-    padding: 4px 9px;
-    border: 1px solid #EAD7D7;
-    border-radius: 3px;
-}
-.todo-index-completed{
-    padding: 5px 10px;
-}
-.todo-index-completed:hover {
-    padding: 4px 9px;
-    border: 1px solid #EAD7D7;
-    border-radius: 3px;
-}
-.todo-button-clear {
-    padding: 5px 10px;
-}
+
+
+.
