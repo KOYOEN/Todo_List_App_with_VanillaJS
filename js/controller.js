@@ -7,12 +7,21 @@
         var self = this;
         this.view.bind('newTodo', function (title) {
             self.addItem(title);
-
-        })
-        //this.showAll();
+        });
+        this.view.bind('itemRemove', function (item){
+            self.removeItem(item.id);
+        });
+        this.view.bind('itemEdit', function(item){
+            self.editItem(item.id);
+        });
+        this.view.bind('itemEditDone', function(item){
+            self.editItemSave(item.id, item.title);
+        });
+        this.showAll();
     }
 
     Controller.prototype.showAll = function(){
+        console.log('Controller showAll execute!');
         var self = this;
         self.model.read(function (data) {
             self.view.render('showEntries', data);
@@ -20,6 +29,7 @@
     };
 
     Controller.prototype.addItem = function (title) {
+        console.log('Controller addItem execute!');
         var self = this;
         if(title.trim() === '') {
             return;
@@ -27,33 +37,38 @@
 
         self.model.create(title, function() {
             self.view.render('clearNewTodo');
-            self._filter(true);
+        });
+        this.showAll();
+    };
+
+    Controller.prototype.removeItem = function(id){
+        console.log("Controller.removeItem execute!");
+        var self = this;
+        self.model.remove(id, function(){
+            self.view.render('removeItem', id);
+        });
+        this.showAll();
+    };
+
+    Controller.prototype.editItem = function(id){
+        console.log('Controller.editItem execute!');
+        var self = this;
+        self.model.read(id, function(data){
+            self.view.render('editItem', { id: id, title: data[0].title});
         });
     };
 
-    Controller.prototype.setView = function (locationHash) {
-        var route = locationHash.split('/')[1];
-        var page = route || '';
-        this._updateFilterState(page);
-    }
+    Controller.prototype.editItemSave = function(id, title){
+        console.log('Controller.editItemSave execute!');
+        var self = this;
+        title = title.trim();
 
-    Controller.prototype._filter = function (force) {
-        var activeRoute = this._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1);
-
-
-    }
-    Controller.prototype._updateFilterState = function (currentPage) {
-        this._activeRoute = currentPage;
-
-        if(currentPage === '') {
-            this._activeRoute = 'All';
+        if(title.length != 0){
+            self.model.update(id, {title: title}, function(){
+                self.view.render('editItemDone', {id: id, title: title});
+            });
         }
-
-        this._filter();
-
-        this.view.render('setFilter', currentPage);
-    };
-
+    }
     window.app = window.app || {};
     window.app.Controller = Controller;
 })(window);

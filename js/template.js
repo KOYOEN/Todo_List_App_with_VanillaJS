@@ -2,17 +2,19 @@
     'use strict';
 
     function Template(){
+        console.log('Template created!');
         this.defaultTemplate
         =    `<li data-id="{{id}}" class="{{completed}}">`
         +    '<div class="view">'
         +            '<input class="toggle" type="checkbox" {{checked}}>'
         +            '<label>{{title}}</label>'
-        +            '<button class="destory"></button>'
+        +            '<button class="destroy"></button>'
         +        '</div>'
         +    '</li>';
     }
 
     Template.prototype.show = function(data){
+        console.log('Template.show execute!');
         var i, l;
         var view = '';
         for (i = 0, l = data.length; i < l; i++){
@@ -32,7 +34,6 @@
 
             view = view + template;
         }
-
         return view;
     };
 

@@ -11,10 +11,4 @@
 
     var todo = new App('todos-vanillajs');
 
-    function setView() {
-        todo.controller.setView(document.location.hash);
-    }
-
-    window.addEventListener('load', setView);
-    window.addEventListener('hashchange', setView);
 })();

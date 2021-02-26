@@ -16,6 +16,22 @@
         callback.call(this, JSON.parse(localStorage.getItem(name)));
     }
 
+    Store.prototype.find = function(query, callback){
+        if(!callback){
+            return ;
+        }
+        var todos = JSON.parse(localStorage.getItem(this._dbName));
+        //query는 {id :~~~} , q는 key값
+        callback.call(this, todos.filter(function(todo){
+            for(var q in query){
+                if(query[q] !== todo[q]){
+                    return false;
+                }
+            }
+            return true;
+        }));
+
+    }
     Store.prototype.findAll = function(callback) {
         callback = callback || function() {};
         callback.call(this, JSON.parse(localStorage.getItem(this._dbName)));
@@ -34,7 +50,7 @@
                     break;
                 }
             }
-            localStorage.setItem(this_dbName, JSON.stringify(todos));
+            localStorage.setItem(this._dbName, JSON.stringify(todos));
             callback.call(this, todos);
         }else {
             // Generate an ID
@@ -45,6 +61,21 @@
             callback.call(this, [updateData]);
         }
     };
+
+    Store.prototype.remove = function(id, callback){
+        console.log('Storage.remove method execute!');
+        var todos = JSON.parse(localStorage.getItem(this._dbName));
+
+        for (var i=0; i<todos.length; i++){
+            if(todos[i].id === id){
+                todos.splice(i, 1);
+                break;
+            }
+        }
+
+        localStorage.setItem(this._dbName, JSON.stringify(todos));
+        callback.call(this, todos);
+    }
 
     window.app = window.app || {};
     window.app.Store = Store;
