@@ -2,22 +2,23 @@
     'use strict';
     function Controller(model, view){
         console.log('controller created!');
-        this.model = model;
-        this.view = view;
         var self = this;
-        this.view.bind('newTodo', function (title) {
+        self.model = model;
+        self.view = view;
+
+        self.view.bind('newTodo', function (title) {
             self.addItem(title);
         });
-        this.view.bind('itemRemove', function (item){
+        self.view.bind('itemRemove', function (item){
             self.removeItem(item.id);
         });
-        this.view.bind('itemEdit', function(item){
+        self.view.bind('itemEdit', function(item){
             self.editItem(item.id);
         });
-        this.view.bind('itemEditDone', function(item){
+        self.view.bind('itemEditDone', function(item){
             self.editItemSave(item.id, item.title);
         });
-        this.showAll();
+        self.showAll();
     }
 
     Controller.prototype.showAll = function(){
